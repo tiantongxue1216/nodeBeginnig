@@ -1,26 +1,14 @@
 //上传文字
-// function route(handle, pathname, response, postData) {
-//   console.log("About to route a request for " + pathname)
-//   if(typeof handle[pathname] === "function") {
-//     return handle[pathname](response, postData);
-//   }else {
-//     console.log("No request handler found for " + pathname)
-//     response.writeHead(404, {"Content-Type": "text/plain;charset=utf-8"});
-//     response.write("404 Not found");
-//     response.end();
-//   }
-// }
-
-//上传文字
-function route(handle, pathname, response, request) {
+function route(handle, pathname, response, postData) {
   console.log("About to route a request for " + pathname)
   if(typeof handle[pathname] === "function") {
-    return handle[pathname](response, request);
+    return handle[pathname](response, postData);
   }else {
     console.log("No request handler found for " + pathname)
-    response.writeHead(404, {"Content-Type": "text/html;charset=utf-8"});
+    response.writeHead(404, {"Content-Type": "text/plain;charset=utf-8"});
     response.write("404 Not found");
     response.end();
   }
 }
+
 exports.route = route;
